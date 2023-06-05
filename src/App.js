@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Child from "./components/Child";
+import { useCallback } from "react";
+const App = () => {
+  const [count, setCount] = useState(0);
+  const [user, setUser] = useState("");
 
-function App() {
+  const updateCount = useCallback(() => {
+    setCount(count + 1);
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {count}
+      <hr />
+      <button onClick={() => setCount(count + 1)}> Add One</button>
+      <input type="text" onChange={(e) => setUser(e.target.value)} />
+      {/* rerender After plus */}
+      <Child count={count} updateCount={updateCount} />
     </div>
   );
-}
-
+};
 export default App;

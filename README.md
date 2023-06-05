@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+النهاردة هتتكلم عن الـperformance في الـreactJs :
+هنبدأ كلامنا بـ الـmemo ؟
+الـmemo فكرتها انها بتعملك cashing للـ انبوت والأوتبوت ال عندك لو مفيش عليهم تغير
+في الـreactJs نقدر نعملـmemo للـ كومبونانت والفانكشن وكمان الفاليو الراجعة من الفانكشن
+فمثلا عندك في المثال الأول :
+عبارة عن كومبوننت اسمها     Child  داخلها كونسول لوج .. عشان أعرف هل الكومبوننت دي هتترندر ولا لأ ؟
+وبعدين بستدعيها في الـِApp
+وفي الـApp عندي كاونتر بسيط بيزود واحد
+لما باجي أزود الكاونتر بيحصل ريريندر لكل من الـApp والـChild طب ليه ؟
+في حين إن التغير بيكون في الـApp بس
+تعالي أفكرك ايمتا بيحصل ريندر للكومبوننت في تلات حالات
+أول ما تفتح الـDom
+لو حصل تغير في الـprops
+لو حصل تغير في الـstate
+طب ازاي أمنع الـChild من إنها تترندر هنا ياجي دور الـmemo
+الـmemo يا سيدي ببساطة هتكيش الـChild وما دام مفيش تغير هيتم عليها اذن هتمنع اعادة رندرتها
+طبعا خلي بالك لو أرسلت أي بروبس للـChild هتترندر
+بس الـmemo فيها عيب اي هو ؟ بص ع المثال التاني
+مثال عادي كل ال عملته اني أرسلت الكاونتر كـprops للـChild وعملتـinput بسيط
+طبعا كل ما هتزود الكاونتر هتعمل ريريندر للـchild ولكن مهما تغير في الـinput مش هيحصل ريرندر للـChild ودي حاجه منطقية بص ع المثال التاني
+ال مش منطقي هو المثال التالت يا معلم وهو اني عملت فانكشن بتزود الكاونتر اسمها updateCount فالمفروض يحصل ريريندر للـChild بناءا عليها لكن اكتشفت ان لما بتكتب أي حاجه في الـinput بيحصل ريرندر للكومبوننت برضو مع اني مش باعت أي حاجه تخصها للـChild طب اي ال حصل بالضبط تعالي أقولك
+كل مرة بغير الـstate الخاصة بالـInput بيحصل render للـApp وبالتالي هيعيد تعريف الفانكشن ال اسمها updateCount ويبعتها للـChild فكأن الـChild هيتبعت ليها داتا جديدة فهيحصل ليها reRender
+وبالتالي فا احنا ممكن نقول ان الـmemo بتشتغل مع الـprimitive داتا تايب بس !
+طب عاوزين حل للمشكلة هنا يظهر لينا الـuseCallBack وهو هوك بيعمل كاش للفانكشن بياخد الفانكشن والديبانسيس
+بص المثال التالت :
+تعالي بقي نفهم الـuseMemo  ودي ببساطه هتكيش الفاليو بص علي مثال تلاته في حالة عملت updateCount هتلاقي فيه بطأ في العد والسبب هو الكاونت الخاص بالـoutput
+بص المثال الرابع هتتوضح الدنيا
+المهندس حمزة شرح الموضوع باستفاضة ويسر :
+https://www.youtube.com/watch?v=9MxTiWi8fjw
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
